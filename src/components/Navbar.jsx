@@ -5,8 +5,9 @@ function Navbar() {
   const isHome = location.pathname === '/'
   const isAbout = location.pathname === '/about'
   const isTeam = location.pathname === '/team'
+  const isEvents = location.pathname === '/events'
   
-  // 根据页面决定文字颜色：Home 和 Team 是深色背景用白色文字，About 是浅色背景用深色文字
+  // 根据页面决定文字颜色：Home 和 Team 是深色背景用白色文字，About 和 Events 是浅色背景用深色文字
   const textColor = (isHome || isTeam) ? 'text-white' : 'text-[#252627]'
 
   return (
@@ -45,12 +46,12 @@ function Navbar() {
         >
           TEAM
         </Link>
-        <a 
-          href="#events" 
+        <Link 
+          to="/events" 
           className={`font-anton text-2xl md:text-3xl uppercase tracking-wide hover:opacity-80 transition-opacity ${textColor}`}
         >
           EVENTS
-        </a>
+        </Link>
         <a 
           href="#connections" 
           className={`font-anton text-2xl md:text-3xl uppercase tracking-wide hover:opacity-80 transition-opacity ${textColor}`}
