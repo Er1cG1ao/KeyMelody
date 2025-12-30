@@ -1,1 +1,15 @@
 /* Custom styles for scroll snap - removed duplicate */
+
+/* Scroll arrow animation */
+@keyframes float {
+  0%, 100% {
+    transform: translate(-50%, 0);
+  }
+  50% {
+    transform: translate(-50%, 10px);
+  }
+}
+
+.scroll-arrow {
+  animation: float 2s ease-in-out infinite;
+}
