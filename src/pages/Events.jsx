@@ -1,7 +1,17 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import Footer from '../components/Footer'
 
 function Events() {
+  const [showArrow, setShowArrow] = useState(false)
+
+  useEffect(() => {
+    // 延迟1.5秒显示箭头
+    const timer = setTimeout(() => {
+      setShowArrow(true)
+    }, 1500)
+    return () => clearTimeout(timer)
+  }, [])
   const events = [
     {
       image: '/event1.png'
@@ -77,10 +87,35 @@ function Events() {
             ))}
           </div>
         </div>
+
+        {/* Scroll Arrow */}
+        {showArrow && (
+          <div className="absolute bottom-4 left-1/2 z-20 scroll-arrow">
+            <a 
+              href="#upcoming" 
+              className="flex flex-col items-center text-[#252627] hover:opacity-80 transition-opacity cursor-pointer"
+            >
+              <svg 
+                className="w-8 h-8 md:w-10 md:h-10 lg:w-12 lg:h-12" 
+                fill="none" 
+                stroke="currentColor" 
+                viewBox="0 0 24 24"
+              >
+                <path 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round" 
+                  strokeWidth={2} 
+                  d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+                />
+              </svg>
+            </a>
+          </div>
+        )}
       </section>
 
       {/* Upcoming Event Section with Footer */}
       <section 
+        id="upcoming"
         className="w-full h-screen snap-start snap-always flex flex-col"
         style={{ backgroundColor: '#c3bdae' }}
       >
