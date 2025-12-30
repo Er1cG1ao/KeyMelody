@@ -4,9 +4,10 @@ function Navbar() {
   const location = useLocation()
   const isHome = location.pathname === '/'
   const isAbout = location.pathname === '/about'
+  const isTeam = location.pathname === '/team'
   
-  // 根据页面决定文字颜色
-  const textColor = isHome ? 'text-white' : 'text-[#252627]'
+  // 根据页面决定文字颜色：Home 和 Team 是深色背景用白色文字，About 是浅色背景用深色文字
+  const textColor = (isHome || isTeam) ? 'text-white' : 'text-[#252627]'
 
   return (
     <div className="absolute top-8 left-12 right-16 z-20 flex items-center">
@@ -38,12 +39,12 @@ function Navbar() {
         >
           ABOUT
         </Link>
-        <a 
-          href="#team" 
+        <Link 
+          to="/team" 
           className={`font-anton text-2xl md:text-3xl uppercase tracking-wide hover:opacity-80 transition-opacity ${textColor}`}
         >
           TEAM
-        </a>
+        </Link>
         <a 
           href="#events" 
           className={`font-anton text-2xl md:text-3xl uppercase tracking-wide hover:opacity-80 transition-opacity ${textColor}`}

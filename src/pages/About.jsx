@@ -174,7 +174,7 @@ function About() {
         </div>
 
         {/* Footer inside the same section */}
-        <Footer />
+        <Footer disableSnap={true} />
       </section>
     </div>
   )

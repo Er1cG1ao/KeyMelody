@@ -1,7 +1,7 @@
-function Footer() {
+function Footer({ disableSnap = false }) {
   return (
     <footer 
-      className="w-full flex-shrink-0"
+      className={`w-full ${disableSnap ? 'flex-shrink-0' : 'snap-start snap-always'}`}
       style={{ backgroundColor: '#818d71' }}
     >
       <div 
