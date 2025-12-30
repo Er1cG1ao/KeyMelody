@@ -7,11 +7,56 @@ function Home() {
   const [showArrow, setShowArrow] = useState(false)
 
   useEffect(() => {
+    // 预加载主页背景图
     const img = new Image()
     img.src = '/mainBG.png'
     img.onload = () => {
       setImageLoaded(true)
     }
+
+    // 预加载所有其他页面的图片资源
+    const imagesToPreload = [
+      // About 页面
+      '/about1.png',
+      '/about2.png',
+      '/mission1.png',
+      '/mission2.png',
+      '/mission3.png',
+      // Team 页面
+      '/team1.png',
+      '/team2.png',
+      '/team3.png',
+      '/team4.png',
+      // Events 页面
+      '/event1.png',
+      '/event2.png',
+      '/event3.png',
+      '/event4.png',
+      '/30.png',
+      // Connections 页面
+      '/connections1.png',
+      // Home 页面其他图片
+      '/mainPhoto1.png',
+      '/mainPhoto2.png',
+      '/mainPhoto3.png',
+      // 通用资源
+      '/logo.png',
+      '/insLogo.png',
+      '/RedNoteLogo.png',
+      '/keycasLogo.png'
+    ]
+
+    // 预加载所有图片
+    imagesToPreload.forEach((src) => {
+      const preloadImg = new Image()
+      preloadImg.src = src
+      // 使用 link preload 进行更积极的预加载
+      const link = document.createElement('link')
+      link.rel = 'preload'
+      link.as = 'image'
+      link.href = src
+      document.head.appendChild(link)
+    })
   }, [])
 
   useEffect(() => {
